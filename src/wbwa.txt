@@ -1,0 +1,68 @@
+乱谈AsciiDoc的书籍编写
+======================
+houqp 
+v0.1, 2011-09
+:doctype: book
+
+
+[preface]
+前言
+----
+
+写文档什么的最讨厌了。
+
+[[demo]]
+
+一个demo
+--------
+这是一个最简单的示例，从书的第一页起到这一行的所有内容可以通过以下的代码生成：
+
+.....................................................
+乱谈AsciiDoc的书籍编写
+======================
+houqp 
+v0.1, 2011-09
+:doctype: book
+
+[preface]
+前言
+----
+
+写文档什么的最讨厌了。
+
+一个demo
+--------
+这是一个最简单的示例，从书的第一页起到这一行的所有内容可以通过以下的代码生成：
+....................................................
+
+很简单吧，AsciiDoc属于轻量级标记语言，其代码本身就有很高的可读性。这就是AsciiDoc的魅力，用简单的标记做出不简单的效果。
+
+
+:leveloffset: 1
+
+include::tool_chain.txt[]
+include::basic.txt[]
+include::book_eles.txt[]
+include::grammar.txt[]
+include::tips.txt[]
+include::appendix.txt[]
+include::biblio.txt[]
+
+:leveloffset: 0
+
+
+[[index]]
+
+[index]
+索引
+----
+
+//////////////////////////////////////
+索引部分一般留白，内容由系统自动生成。
+//////////////////////////////////////
+
+[colophon]
+版权
+----
+
+本著作係採用Attribution-ShareAlike 3.0 Unported授權。閱讀本授權條款，請到http://creativecommons.org/licenses/by-sa/3.0/，或寫信至Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.

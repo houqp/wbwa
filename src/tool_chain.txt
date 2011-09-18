@@ -1,0 +1,130 @@
+
+[[tool_chain]]
+
+工具链的使用
+============
+
+这一章介绍AsciiDoc环境的搭建，在搭建过程中可以使用<<demo>>中的代码进行测试。
+
+英文文档的制作
+--------------
+
+如果你只需要编写英文书籍，那么几乎不需要改动什么，AsciiDoc所带的工具就能帮你生成你所需要的输出。
+
+.pdf的生成
+======================================
+......................................
+
+a2x -v -f pdf --fop book.txt <1>
+
+......................................
+======================================
+
+<1> -f指定输出的文档格式，而--fop则指定所使用的后端。用AsciiDoc生成pdf有两种后端可选，一个是fop，另一个是dblatex。关于两种后端的优劣，请参考<<pdf_backend>>。
+
+
+改动-f的参数你就能生成HTML格式的书籍：
+
+.HTML的生成
+======================================
+......................................
+
+a2x -v -f xhtml book.txt <1>
+
+......................................
+======================================
+
+
+中文支持
+--------
+
+如果你用上面的方法生成中文文档，会发现所有的中文都变成了“#”号。这是因为fop后端找不到对应的中文字体，所以你需要做一些另外的设置。
+
+AsciiDoc生成文档的方式是先转换为DocBook文档，再使用DocBook的工具链进行编译。在编写DocBook文档时，我们通常使用XSL来进行输出排版的调整，因此在编译AsciiDoc文档时同样可以使用XSL。
+
+
+.中文支持的XSL
+======================================
+......................................
+
+<?xml version='1.0' encoding='UTF-8'?>
+ 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml"
+                version="1.0">
+ 
+  <xsl:param name="l10n.gentext.language" select="'zh_cn'"/>
+  <xsl:param name="body.font.family">
+    WenQuanYi Micro Hei, AR PL KaitiM GB, AR PL SungtiL GB,  <1>
+  </xsl:param>
+  <xsl:param name="monospace.font.family">
+    WenQuanYi Micro Hei, AR PL SungtiL GB
+  </xsl:param>
+  <xsl:param name="title.font.family">
+    WenQuanYi Micro Hei, AR PL SungtiL GB
+  </xsl:param>
+
+</xsl:stylesheet>
+
+......................................
+======================================
+
+<1> 这里指定了正文部分选用字体的顺序。
+
+
+指定完中文字体后还不够，因为你还要告诉fop去哪里找这些字体，所以我们还需要一个fop.xconf的文件：
+
+.fop.xconf的中文设置
+======================================
+......................................
+
+<?xml version="1.0"?>
+
+<fop version="1.0">
+
+  <base>.</base>
+
+  <renderers>
+    <renderer mime="application/pdf">
+      <fonts>
+
+        <font metrics-url="./fop/fonts/wqy-microhei.xml" kerning="yes" embed-url="./fop/fonts/wqy-microhei.ttc"> <1>
+          <font-triplet name="WenQuanYi Micro Hei" style="normal" weight="normal"/> <2>
+        </font>
+
+        <font kerning="yes" embed-url="./fop/fonts/gbsn00lp.ttf">
+          <font-triplet name="AR PL SungtiL GB" style="normal" weight="normal"/>
+        </font>
+
+        <font kerning="yes" embed-url="./fop/fonts/gkai00mp.ttf">
+          <font-triplet name="AR PL KaitiM GB" style="normal" weight="normal"/>
+        </font>
+
+      </fonts>
+    </renderer>
+  </renderers>
+</fop>
+
+......................................
+======================================
+
+<1> 这里指定中文字体文件所在目录。如果你使用相对路径的话这个路径就相对于你运行a2x时所在的目录。
+<2> 这里的意思是当使用WenQuanYi Micro Hei这个字体时，选用字体文件./fop/fonts/wqy-microhei.ttc。
+
+
+经过这一番折腾后你应该就能生成中文pdf了：
+
+.中文pdf的生成
+======================================
+......................................
+
+a2x -v -L -f pdf --fop --xsl-file=xsl/fo.xsl --fop-opts="-c fop/fop.xconf" book.txt <1>
+
+......................................
+======================================
+
+<1> 需要用--xsl-file参数给出xsl文件所在位置，用--fop-opts参数给出fop.xconf所在位置。
+
+
+AsciiDoc的中文支持目前还不完善，这不是它的错，主要问题处出在FOP后端对字体的处理方式上。如果你需要生成粗体或斜体的话可以参考<<fop_faq>>或<<fop_chinese>>。
+
