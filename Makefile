@@ -7,6 +7,9 @@ all:open-pdf
 open-pdf:pdf
 	okular $(TARGET).pdf
 
+index:html
+	mv $(TARGET).html index.html
+
 pdf:
 	a2x -v -L -f pdf --fop \
 	--xsl-file=xsl/fo.xsl \
