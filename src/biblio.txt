@@ -4,16 +4,22 @@
 
 - [[[asciidoc_guide]]] Stuart Rackham. 'AsciiDoc User Guide'.
 
-- [[[pdf_backend]]] Stuart Rackham. 'AsciiDoc User Guide - 5.4. PDF generation'. http://www.methods.co.nz/asciidoc/userguide.html#_pdf_generation
+- [[[pdf_backend]]] Stuart Rackham. 'AsciiDoc User Guide - 5.4. PDF generation'. 
+http://www.methods.co.nz/asciidoc/userguide.html#_pdf_generation
 
 - [[[walsh-muellner]]] Norman Walsh & Leonard Muellner.
   'DocBook - The Definitive Guide'. O'Reilly & Associates. 1999.
 
-- [[[docbook_chinese]]] 如何用docbook生成中文的pdf. http://dev.sei.pku.edu.cn/trac/pkuas/wiki/如何用docbook生成中文的pdf
+- [[[bob-stayton]]] Bob Stayton. 'DocBook XSL: The Complete Guide'. Sagehill
+Enterprises. 2007
+
+- [[[docbook_chinese]]] 如何用docbook生成中文的pdf. 
+http://dev.sei.pku.edu.cn/trac/pkuas/wiki/如何用docbook生成中文的pdf
 
 - [[[fop_faq]]] 利用HTML生成PDF之问题整理. http://salever.iteye.com/blog/860611
 
 - [[[fop_chinese]]] fop中文配置. http://wangxc.iteye.com/blog/598912
 
-- [[[asciidoc_chinese]]] asciidoc中文PDF输出. http://dram.me/blog/2011/03/09/export-chinese-pdf-from-asciidoc.html
+- [[[asciidoc_chinese]]] asciidoc中文PDF输出. 
+http://dram.me/blog/2011/03/09/export-chinese-pdf-from-asciidoc.html
 
