@@ -1,0 +1,433 @@
+= DocBook简介
+:description: DocBook的基本概念
+:keywords: DocBook AsciiDoc 
+:Author: Qingping Hou 
+:Author Initials: houqp
+:Date:   Sep, 2011
+:Email:   dave2008713@gmail.com 
+:max-width!: 25em
+:slidebackground: 
+
+//:incremental:
+
+== 主要内容
+
+ * DocBook
+ * AsciiDoc
+
+== 关于文档编辑
+
+* WYSIWYG（/ˈwɪziwɪɡˈ/）
+** What you *see* is what you get
+** 所 *见* 即所得
+** Microsoft office, Libre office, WPS ...
+
+* WYTIWYG
+** What you *think* is what you get
+** 所 *想* 即所得
+** 重量级
+*** LaTex, DocBook ...
+** 轻量级
+*** AsciiDoc, reStructedText, Markdown, t2t ...
+
+
+== WYTIWYG其实 +挺好+ 的
+
+* +集中+ 精神！
+** 内容与表现分离
+
+* 更多的 +控制+ 权
+
+* 易于 +保管+
+
+* +版本+ 控制（git, svn, mercurial...）
+** 多人编辑，自动合并
+** 计工作量
+
+NOTE: 有时候，大脑比双眼更可靠。
+
+
+== DocBook的基本概念
+
+- XML
+- XSL
+- CSS
+- FO
+
+== DocBook示例
+
+----
+<?xml version='1.0' encoding="utf-8"?>
+
+<book xmlns="http://docbook.org/ns/docbook" 
+  xmlns:xi="http://www.w3.org/2003/XInclude"
+  version="5.0" xml:lang="zh-CN"
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  xml:id ="book">
+
+<info>
+  <title>书名</title>
+  <author><personname>作者名</personname></author>
+  <copyright><year>2011</year></copyright>
+</info>
+
+<chapter>
+  <title>第一章</title>
+  <para>内容……</para>
+</chapter>
+
+</book>
+----
+
+NOTE: 这里所使用的是DocBook5标准
+
+== XSL示例
+
+----
+<?xml version='1.0' encoding='UTF-8'?>
+ 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml"
+                version="1.0">
+ 
+<xsl:import href="./xsl-ns-stylesheets/fo/docbook.xsl"/> <1>
+ 
+<xsl:param name="body.font.family">WenQuanYi Micro Hei</xsl:param> <2>
+<xsl:param name="body.margin.bottom" select="'0.4in'"/> <2>
+
+</xsl:stylesheet>
+----
+
+<1> 包含其他的xsl文件。
+<2> 对文档排版的具体设置。
+
+
+== DocBook工具链
+
+*DocBook(XML) => FO => PDF*
+
+生成fo文件：
+
+----
+xsltproc \
+  --output output.fo \
+  --stringparam fop1.extensions 1 \ <1>
+  docbook-pdf.xsl $(DOC_NAME).xml <2>
+----
+
+<1> 开启FOP 0.90后续版本的扩展，支持更多的效果。这个也可以通过xsl文件来设定。
+<2> 给定xsl文件以及DocBook文档源码。
+
+生成pdf文件：
+
+----
+fop -c fop.xconf \ <1>
+  -fo output.fo \ <2>
+  -pdf output.pdf
+----
+
+<1> fop配置文件，通常用来设置字体支持。
+<2> 给出刚才生成的fo文件。
+
+
+== DocBook前端：AsciiDoc
+
+*AsciiDoc => DocBook(XML) => FO => PDF*
+
+== AsciiDoc示例
+
+----
+
+  书名
+  ====
+  作者名 
+  v0.1, 2011-09
+  :doctype: book
+
+  [preface]
+  前言
+  ----
+
+  写文档什么的最讨厌了。
+
+
+  第一章
+  ------
+
+  内容……
+
+----
+
+
+== AsciiDoc常用语法
+
+== Section
+
+双行模式：
+
+----
+  书名
+  ====
+
+  第一章标题
+  ----------
+  内容……
+
+  第一章二级标题
+  ~~~~~~~~~~~~~~
+  内容……
+
+  第一章三级标题
+  ^^^^^^^^^^^^^^
+  内容……
+
+  第一章四级标题
+  ++++++++++++++
+  内容……
+
+----
+
+单行模式：
+
+----
+
+  = 书名 =
+  == 第一章标题 ==
+  === 第一章二级标题 ===
+  ==== 第一章三级标题 ====
+  ===== 第一章四级标题 ======
+
+----
+
+== 无序列表
+
+----
+
+  - 第一级 
+  * 第二级 
+  ** 第三级
+  *** 第四级
+  **** 第五级
+  ***** 第六级 
+
+----
+
+- 第一级 
+* 第二级 
+** 第三级
+*** 第四级
+**** 第五级
+***** 第六级 
+
+
+== 有序列表
+
+----
+
+  . 阿拉伯数字作为序号
+  .. 小写字母作为序号
+  .. 小写字母作为序号
+  ... 小写罗马字母作为序号
+  .... 大写字母作为序号
+  ..... 大写罗马字母作为序号
+
+----
+
+. 阿拉伯数字作为序号
+.. 小写字母作为序号
+.. 小写字母作为序号
+... 小写罗马字母作为序号
+.... 大写字母作为序号
+..... 大写罗马字母作为序号
+
+
+== Callout
+
+  ----
+  int swallow_redpill () {
+   unsigned char m[2+4], rpill[] = "\x0f\x01\x0d\x00\x00\x00\x00\xc3"; \<1>
+   *((unsigned*)&rpill[3]) = (unsigned)m;
+   ((void(*)())&rpill)();
+   return (m[5]>0xd0) ? 1 : 0;
+  }
+  ----
+  \<1> SIDT指令，获取IDTR的内容。
+
+
+显示效果：
+
+----
+int swallow_redpill () {
+ unsigned char m[2+4], rpill[] = "\x0f\x01\x0d\x00\x00\x00\x00\xc3"; <1>
+ *((unsigned*)&rpill[3]) = (unsigned)m;
+ ((void(*)())&rpill)();
+ return (m[5]>0xd0) ? 1 : 0;
+}
+----
+<1> SIDT指令，获取IDTR的内容。
+
+
+== 警示元素
+
+目前支持的警示类型有：
+
+- WARNING
+- TIP
+- CAUTION
+- IMPORTANT
+- NOTE
+
+----
+IMPORTANT: 明天要按时交周报告了！
+----
+
+效果：
+
+IMPORTANT: 明天要按时交周报告了！
+
+
+== 原文显示
+
+缩进后的内容不会被AsciiDoc解析。
+
+----
+  这个不会被当成标题处理
+  ======================
+----
+
+:incremental:
+
+== 图片的插入
+
+block模式的图片插入：
+
+----
+image::./images/img1.jpg[title="ExampleImg",scaledwidth="50%",align="center"]
+----
+
+效果：
+
+image::./images/img1.jpg[title="ExampleImg",scaledwidth="50%",align="center"]
+
+
+:incremental!:
+
+== AsciiDoc的工具链
+
+.简单的pdf生成
+----
+a2x -v -f pdf --fop book.txt
+----
+
+.加入自定义的设置
+----
+a2x -v -L -f pdf --fop \ <1>
+      --xsl-file=xsl/fo.xsl \ <2>
+      --fop-opts="-c fop/fop.xconf" \ <3>
+      book.txt
+----
+<1> -L 参数可以关闭xml文件的语法检查
+<2> 添加xsl文件的输入
+<3> 添加fop的配置文件
+
+
+== 文档的组织
+对文档进行恰当的分块，可以方便管理。一般按章节划分。
+
+- 你不用为了查看某一章节的改动而重新编译整本书
+
+- 方便编辑，修改相应章节时只需编辑相应的文件
+
+- 方便版本管理，每一章节有自己的commit历史
+
+在文档中插入其他文档：
+
+----
+
+  include::chapter1.txt[]
+
+----
+
+
+== 如何更高效的编辑AsciiDoc？
+
+*用一个靠谱的编辑器，并装上相应的插件或切换到相应的模式*
+
+* AsciiDoc的源码中有提供Vim的语法染色插件 footnote:[更多请参考 http://www.methods.co.nz/asciidoc/chunked/ch36.html#_know_your_editor]
+
+* Emacs可以使用doc-mode或者adoc-mode footnote:[摘自 http://www.emacswiki.org/emacs/AsciiDoc]
+
+
+== 除了写书，AsciiDoc还能做什么？
+
+* 写文档
+* 做笔记
+* 写博客
+** http://www.methods.co.nz/asciidoc/#_blogpost_weblog_client
+* 写论文
+* 做幻灯片
+
+//== 使用Gettext辅助翻译
+//* 读源代码时是否见过下面的语句？
+
+//----
+//printf (_("Hello")); 
+//print gettext('World!')
+//----
+
+//* 为什么要使用Gettext翻译？
+//** 自动提取需要翻译的内容
+//** 自动翻译重复内容
+//** 增量翻译
+
+//== PO文件与MO文件
+//* PO（portable object）
+//* POT（PO template）
+//* MO
+//** PO文件的二进制版
+
+//== Gettext工具链
+//生成pot文件：
+
+//----
+//xgettext --language=Python --keywords=_ --output=domain.pot *.py
+//----
+
+//生成po文件：
+
+//----
+//msginit --input=domain.pot --locale=zh_CN --output-file=zh_CN.po
+//----
+
+//生成mo文件：
+
+//----
+//msgfmt --output-file=zh_CN.mo zh_CN.po
+//----
+
+//根据新生成的pot文件更新po文件：
+
+//----
+//msgmerge -N --output-file=zh_CN.po zh_CN.old.po domain.pot
+//----
+
+//== Gettext DEMO
+
+//== PO编辑工具
+
+
+
+== Ref
+- 中文文档： http://houqp.github.com/wbwa/wbwa.html
+- 英文文档： http://www.methods.co.nz/asciidoc/userguide.html
+- 所见即所得： http://wiki.woodpecker.org.cn/moin/WyTiWyG
+- http://csrp.iut-blagnac.fr/jmiwebsite/home/index.html
+- http://invisiblethings.org/papers/redpill.html
+- [[[walsh-muellner]]] Norman Walsh & Leonard Muellner.
+  'DocBook - The Definitive Guide'. O'Reilly & Associates. 1999.
+- [[[bob-stayton]]] Bob Stayton. 'DocBook XSL: The Complete Guide'. Sagehill
+  Enterprises. 2007
+- Slidy backend for AsciiDoc: http://www.methods.co.nz/asciidoc/slidy.html#(1)
+- AsciiDoc and Slidy Contribs: http://csrp.iut-blagnac.fr/jmiwebsite/home/index.html
+
+
