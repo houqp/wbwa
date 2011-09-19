@@ -7,8 +7,8 @@ all:open-pdf
 open-pdf:pdf
 	okular $(TARGET).pdf
 
-index:html
-	mv $(TARGET).html index.html
+index:html pdf
+	mdpage -t index.tp -o index.html
 
 pdf:
 	a2x -v -L -f pdf --fop \

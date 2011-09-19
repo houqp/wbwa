@@ -6,9 +6,7 @@
 </head>
 
 <body>
-<p>请点击<a href="./wbwa.html">这里</a>查看网页版。</p>
-
-<p>PDF版可以点击<a href="./wbwa.pdf">这里</a>下载。</p>
+@index.md
 </body>
 
 </html>

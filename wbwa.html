@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>乱谈AsciiDoc的书籍编写</title><link rel="stylesheet" href="docbook-xsl.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /></head><body><div xml:lang="en" class="book" title="乱谈AsciiDoc的书籍编写" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="idp24673360"></a>乱谈AsciiDoc的书籍编写</h1></div><div><div class="author"><h3 class="author"><span class="firstname">houqp</span></h3></div></div><div><div class="revhistory"><table border="1" width="100%" summary="Revision history"><tr><th align="left" valign="top" colspan="3"><b>Revision History</b></th></tr><tr><td align="left">Revision 0.1</td><td align="left">2011-09</td><td align="left">H</td></tr></table></div></div></div><hr /></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="preface"><a href="#_前言">前言</a></span></dt><dt><span class="chapter"><a href="#demo">1. 一个demo</a></span></dt><dt><span class="chapter"><a href="#tool_chain">2. 工具链的使用</a></span></dt><dd><dl><dt><span class="section"><a href="#_英文文档的制作">2.1. 英文文档的制作</a></span></dt><dt><span class="section"><a href="#_中文支持">2.2. 中文支持</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_asciidoc基础">3. AsciiDoc基础</a></span></dt><dd><dl><dt><span class="section"><a href="#chaper">3.1. 章节</a></span></dt><dt><span class="section"><a href="#normal_para">3.2. 段落</a></span></dt><dt><span class="section"><a href="#_字体样式">3.3. 字体样式</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_写书常用的元素">4. 写书常用的元素</a></span></dt><dd><dl><dt><span class="section"><a href="#_脚注">4.1. 脚注</a></span></dt><dt><span class="section"><a href="#_索引">4.2. 索引</a></span></dt><dt><span class="section"><a href="#_内部引用">4.3. 内部引用</a></span></dt><dt><span class="section"><a href="#_附录_索引与参考目录的撰写">4.4. 附录，索引与参考目录的撰写</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_asciidoc常用标记介绍">5. AsciiDoc常用标记介绍</a></span></dt><dd><dl><dt><span class="section"><a href="#_列表">5.1. 列表</a></span></dt><dd><dl><dt><span class="section"><a href="#_无序列表">5.1.1. 无序列表</a></span></dt><dt><span class="section"><a href="#_有序列表">5.1.2. 有序列表</a></span></dt><dt><span class="section"><a href="#_标签列表">5.1.3. 标签列表</a></span></dt><dt><span class="section"><a href="#_callout列表">5.1.4. Callout列表</a></span></dt></dl></dd><dt><span class="section"><a href="#_特殊段落">5.2. 特殊段落</a></span></dt><dd><dl><dt><span class="section"><a href="#literal_para">5.2.1. literal段落</a></span></dt><dt><span class="section"><a href="#_引用段落">5.2.2. 引用段落</a></span></dt><dt><span class="section"><a href="#admon_para">5.2.3. 警示段落</a></span></dt></dl></dd><dt><span class="section"><a href="#_有界块元素">5.3. 有界块元素</a></span></dt><dd><dl><dt><span class="section"><a href="#_示例块">5.3.1. 示例块</a></span></dt><dt><span class="section"><a href="#_注释块">5.3.2. 注释块</a></span></dt><dt><span class="section"><a href="#_引用块">5.3.3. 引用块</a></span></dt></dl></dd><dt><span class="section"><a href="#block_title">5.4. 块标题</a></span></dt><dt><span class="section"><a href="#_表格">5.5. 表格</a></span></dt><dt><span class="section"><a href="#_图片的插入">5.6. 图片的插入</a></span></dt></dl></dd><dt><span class="chapter"><a href="#_提高效率的小技巧">6. 提高效率的小技巧</a></span></dt><dd><dl><dt><span class="section"><a href="#_文档的组织">6.1. 文档的组织</a></span></dt></dl></dd><dt><span class="appendix"><a href="#_附录示例">A. 附录示例</a></span></dt><dd><dl><dt><span class="section"><a href="#_附录子目录">A.1. 附录子目录</a></span></dt></dl></dd><dt><span class="bibliography"><a href="#_参考文献目录">参考文献目录</a></span></dt><dt><span class="index"><a href="#index">索引</a></span></dt></dl></div><div class="list-of-figures"><p><b>List of Figures</b></p><dl><dt>5.1. <a href="#idp30348992">Levitating GNU</a></dt></dl></div><div class="list-of-tables"><p><b>List of Tables</b></p><dl><dt>5.1. <a href="#idp30319056">表格示例</a></dt></dl></div><div class="list-of-examples"><p><b>List of Examples</b></p><dl><dt>2.1. <a href="#idp28423936">pdf的生成</a></dt><dt>2.2. <a href="#idp24783872">HTML的生成</a></dt><dt>2.3. <a href="#idp24600192">中文支持的XSL</a></dt><dt>2.4. <a href="#idp24605632">fop.xconf的中文设置</a></dt><dt>2.5. <a href="#idp24613488">中文pdf的生成</a></dt><dt>3.1. <a href="#idp24623040">一本书的骨架</a></dt><dt>3.2. <a href="#idp24630352">目录的嵌套</a></dt><dt>3.3. <a href="#idp24634608">单行标题</a></dt><dt>4.1. <a href="#idp30115552">脚注代码</a></dt><dt>4.2. <a href="#idp30117376">脚注效果</a></dt><dt>4.3. <a href="#idp30122560">索引代码</a></dt><dt>4.4. <a href="#idp30127872">索引效果</a></dt><dt>4.5. <a href="#idp30141728">引用代码</a></dt><dt>4.6. <a href="#idp30148528">引用效果</a></dt><dt>4.7. <a href="#idp30164672">附录代码</a></dt><dt>4.8. <a href="#idp30167392">参考目录代码</a></dt><dt>4.9. <a href="#idp30174624">索引表目代码</a></dt><dt>5.1. <a href="#idp30186704">无序列表语法</a></dt><dt>5.2. <a href="#idp30188608">无序列表效果</a></dt><dt>5.3. <a href="#ul_code">无序列表的多级嵌套</a></dt><dt>5.4. <a href="#idp30200192">有序列表语法</a></dt><dt>5.5. <a href="#idp30208896">有序列表效果</a></dt><dt>5.6. <a href="#idp30232464">标签列表代码</a></dt><dt>5.7. <a href="#idp30237344">标签列表效果</a></dt><dt>5.8. <a href="#idp30249280">Callout列表代码</a></dt><dt>5.9. <a href="#idp30255648">literal段落语法</a></dt><dt>5.10. <a href="#idp30257808">literal段落效果</a></dt><dt>5.11. <a href="#idp30261120">引用段落代码</a></dt><dt>5.12. <a href="#quote_para">引用段落效果</a></dt><dt>5.13. <a href="#idp30269184">警示段落代码</a></dt><dt>5.14. <a href="#idp30271168">警示段落效果</a></dt><dt>5.15. <a href="#idp30278656">示例块代码</a></dt><dt>5.16. <a href="#idp30280752">示例标题</a></dt><dt>5.17. <a href="#idp30283024">注释块代码</a></dt><dt>5.18. <a href="#idp30286624">引用块代码</a></dt><dt>5.19. <a href="#idp30291520">引用块效果</a></dt><dt>5.20. <a href="#idp30299120">块标题代码</a></dt><dt>5.21. <a href="#idp30304144">块标题效果</a></dt><dt>5.22. <a href="#idp30308208">表格代码</a></dt><dt>5.23. <a href="#idp30318416">表格效果</a></dt><dt>5.24. <a href="#idp30341328">图片代码</a></dt><dt>5.25. <a href="#idp30345472">图片效果</a></dt><dt>6.1. <a href="#idp30359888">AsciiDoc文档的插入</a></dt><dt>6.2. <a href="#idp30363328">leveloffset的设定</a></dt></dl></div><div class="preface" title="前言"><div class="titlepage"><div><div><h2 class="title"><a id="_前言"></a>前言</h2></div></div></div><p>写文档什么的最讨厌了。</p></div><div class="chapter" title="Chapter 1. 一个demo"><div class="titlepage"><div><div><h2 class="title"><a id="demo"></a>Chapter 1. 一个demo</h2></div></div></div><p>这是一个最简单的示例，从书的第一页起到这一行的所有内容可以通过以下的代码生成：</p><pre class="literallayout">乱谈AsciiDoc的书籍编写
+======================
+houqp
+v0.1, 2011-09
+:doctype: book
+
+[preface]
+前言
+----
+
+写文档什么的最讨厌了。
+
+一个demo
+--------
+这是一个最简单的示例，从书的第一页起到这一行的所有内容可以通过以下的代码生成：</pre><p>很简单吧，AsciiDoc属于轻量级标记语言，其代码本身就有很高的可读性。这就是AsciiDoc的魅力，用简单的标记做出不简单的效果。</p></div><div class="chapter" title="Chapter 2. 工具链的使用"><div class="titlepage"><div><div><h2 class="title"><a id="tool_chain"></a>Chapter 2. 工具链的使用</h2></div></div></div><p>这一章介绍AsciiDoc环境的搭建，在搭建过程中可以使用<a class="xref" href="#demo" title="Chapter 1. 一个demo">Chapter 1, <i>一个demo</i></a>中的代码进行测试。</p><div class="section" title="2.1. 英文文档的制作"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_英文文档的制作"></a>2.1. 英文文档的制作</h2></div></div></div><p>如果你只需要编写英文书籍，那么几乎不需要改动什么，AsciiDoc所带的工具就能帮你生成你所需要的输出。</p><div class="example"><a id="idp28423936"></a><p class="title"><b>Example 2.1. pdf的生成</b></p><div class="example-contents"><pre class="literallayout">a2x -v -f pdf --fop book.txt <a id="CO1-1"></a>(1)</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO1-1">(1)</a> </p></td><td valign="top" align="left"><p>
+-f指定输出的文档格式，而--fop则指定所使用的后端。用AsciiDoc生成pdf有两种后端可选，一个是fop，另一个是dblatex。关于两种后端的优劣，请参考<a class="xref" href="#pdf_backend">[pdf_backend]</a>。
+</p></td></tr></table></div><p>改动-f的参数你就能生成HTML格式的书籍：</p><div class="example"><a id="idp24783872"></a><p class="title"><b>Example 2.2. HTML的生成</b></p><div class="example-contents"><pre class="literallayout">a2x -v -f xhtml book.txt <a id="CO2-1"></a>(1)</pre></div></div><br class="example-break" /></div><div class="section" title="2.2. 中文支持"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_中文支持"></a>2.2. 中文支持</h2></div></div></div><p>如果你用上面的方法生成中文文档，会发现所有的中文都变成了“#”号。这是因为fop后端找不到对应的中文字体，所以你需要做一些另外的设置。</p><p>AsciiDoc生成文档的方式是先转换为DocBook文档，再使用DocBook的工具链进行编译。在编写DocBook文档时，我们通常使用XSL来进行输出排版的调整，因此在编译AsciiDoc文档时同样可以使用XSL。</p><div class="example"><a id="idp24600192"></a><p class="title"><b>Example 2.3. 中文支持的XSL</b></p><div class="example-contents"><pre class="literallayout">&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/1999/xhtml"
+                version="1.0"&gt;
+
+  &lt;xsl:param name="l10n.gentext.language" select="'zh_cn'"/&gt;
+  &lt;xsl:param name="body.font.family"&gt;
+    WenQuanYi Micro Hei, AR PL KaitiM GB, AR PL SungtiL GB,  <a id="CO2-2"></a>(1)
+  &lt;/xsl:param&gt;
+  &lt;xsl:param name="monospace.font.family"&gt;
+    WenQuanYi Micro Hei, AR PL SungtiL GB
+  &lt;/xsl:param&gt;
+  &lt;xsl:param name="title.font.family"&gt;
+    WenQuanYi Micro Hei, AR PL SungtiL GB
+  &lt;/xsl:param&gt;
+
+&lt;/xsl:stylesheet&gt;</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO2-1">(1)</a> <a href="#CO2-2">(1)</a> </p></td><td valign="top" align="left"><p>
+这里指定了正文部分选用字体的顺序。
+</p></td></tr></table></div><p>指定完中文字体后还不够，因为你还要告诉fop去哪里找这些字体，所以我们还需要一个fop.xconf的文件：</p><div class="example"><a id="idp24605632"></a><p class="title"><b>Example 2.4. fop.xconf的中文设置</b></p><div class="example-contents"><pre class="literallayout">&lt;?xml version="1.0"?&gt;
+
+&lt;fop version="1.0"&gt;
+
+  &lt;base&gt;.&lt;/base&gt;
+
+  &lt;renderers&gt;
+    &lt;renderer mime="application/pdf"&gt;
+      &lt;fonts&gt;
+
+        &lt;font metrics-url="./fop/fonts/wqy-microhei.xml" kerning="yes" embed-url="./fop/fonts/wqy-microhei.ttc"&gt; <a id="CO3-1"></a>(1)
+          &lt;font-triplet name="WenQuanYi Micro Hei" style="normal" weight="normal"/&gt; <a id="CO3-2"></a>(2)
+        &lt;/font&gt;
+
+        &lt;font kerning="yes" embed-url="./fop/fonts/gbsn00lp.ttf"&gt;
+          &lt;font-triplet name="AR PL SungtiL GB" style="normal" weight="normal"/&gt;
+        &lt;/font&gt;
+
+        &lt;font kerning="yes" embed-url="./fop/fonts/gkai00mp.ttf"&gt;
+          &lt;font-triplet name="AR PL KaitiM GB" style="normal" weight="normal"/&gt;
+        &lt;/font&gt;
+
+      &lt;/fonts&gt;
+    &lt;/renderer&gt;
+  &lt;/renderers&gt;
+&lt;/fop&gt;</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO3-1">(1)</a> </p></td><td valign="top" align="left"><p>
+这里指定中文字体文件所在目录。如果你使用相对路径的话这个路径就相对于你运行a2x时所在的目录。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO3-2">(2)</a> </p></td><td valign="top" align="left"><p>
+这里的意思是当使用WenQuanYi Micro Hei这个字体时，选用字体文件./fop/fonts/wqy-microhei.ttc。
+</p></td></tr></table></div><p>经过这一番折腾后你应该就能生成中文pdf了：</p><div class="example"><a id="idp24613488"></a><p class="title"><b>Example 2.5. 中文pdf的生成</b></p><div class="example-contents"><pre class="literallayout">a2x -v -L -f pdf --fop --xsl-file=xsl/fo.xsl --fop-opts="-c fop/fop.xconf" book.txt <a id="CO4-1"></a>(1)</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO4-1">(1)</a> </p></td><td valign="top" align="left"><p>
+需要用--xsl-file参数给出xsl文件所在位置，用--fop-opts参数给出fop.xconf所在位置。
+</p></td></tr></table></div><p>AsciiDoc的中文支持目前还不完善，这不是它的错，主要问题处出在FOP后端对字体的处理方式上。如果你需要生成粗体或斜体的话可以参考<a class="xref" href="#fop_faq">[fop_faq]</a>或<a class="xref" href="#fop_chinese">[fop_chinese]</a>。</p></div></div><div class="chapter" title="Chapter 3. AsciiDoc基础"><div class="titlepage"><div><div><h2 class="title"><a id="_asciidoc基础"></a>Chapter 3. AsciiDoc基础</h2></div></div></div><p>在这一章里我会介绍一些用AsciiDoc编写文档所需用到的最基本的语法，整个教程我都会以写书为例，这里也不例外。看完本章后你应该就能写出一本非常朴素的书了！</p><div class="section" title="3.1. 章节"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="chaper"></a>3.1. 章节</h2></div></div></div><p>写书前当然要先列个提纲，拟个目录，再往里面慢慢充实内容。先来看看一本书通常会包含哪些结构：</p><div class="example"><a id="idp24623040"></a><p class="title"><b>Example 3.1. 一本书的骨架</b></p><div class="example-contents"><pre class="literallayout">书名
+====
+作者名
+v0.1, 2012-12
+:doctype: book <a id="CO5-1"></a>(1)
+
+[preface]
+前言标题
+-------- <a id="CO5-2"></a>(2)
+前言前言前言……
+
+第一章标题
+----------
+内容内容内容……
+
+第二章标题
+----------
+内容内容内容……
+
+[appendix]
+附录标题
+--------
+内容内容内容……
+
+[bibliography]
+参考文献标题
+------------
+内容内容内容……
+
+[index]
+索引标题
+--------</pre></div></div><br class="example-break" /><div class="calloutlist"><a id="0_1_section"></a><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO5-1">(1)</a> </p></td><td valign="top" align="left"><p>
+这里的每一个章节其实就是AsciiDoc里面的1级section，当我们将doctype设为book的时候1级section在语义上就成为书本里的章节了，而0级section就成为了书本的题目。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO5-2">(2)</a> </p></td><td valign="top" align="left"><p>
+注意标题标示的长度应与标题文字的长度一致。
+</p></td></tr></table></div><p>我们写书的时候每一章下面还会有子章节。AsciiDoc最多支持4级子目录，每一级的目录标题都需要用不同的语法来标示（废话……）。请看下面的示例：</p><div class="example"><a id="idp24630352"></a><p class="title"><b>Example 3.2. 目录的嵌套</b></p><div class="example-contents"><pre class="literallayout">第二章标题
+----------
+内容……
+
+第二章二级标题
+~~~~~~~~~~~~~~
+内容……
+
+第二章三级标题
+^^^^^^^^^^^^^^
+内容……
+
+第二章四级标题
+++++++++++++++
+内容……</pre></div></div><br class="example-break" /><p>或许有人会觉到写个标题还要用另一整行来标示，好麻烦呀。其实AsciiDoc支持两种标题的标记语法。一种是<a id="idp24632672" class="indexterm"></a>双行标题（Two line title），另一种是<a id="idp24633488" class="indexterm"></a>单行标题（One line title）。双行标题就是我们前面所用的那种，而单行标题则允许用户将标题的定义与内容写在一行里面：</p><div class="example"><a id="idp24634608"></a><p class="title"><b>Example 3.3. 单行标题</b></p><div class="example-contents"><pre class="literallayout">= 书本标题 =
+== 第一章标题 ==
+=== 第一章二级标题 ===
+==== 第一章三级标题 ====
+===== 第一章四级标题 ======</pre></div></div><br class="example-break" /><p>在写书时具体使用哪种格式则纯粹是个人喜好了。如果你想再偷懒一点，单行标题右边的“=”也是可以省略的。</p></div><div class="section" title="3.2. 段落"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="normal_para"></a>3.2. 段落</h2></div></div></div><p>AsciiDoc非常轻量，以至于它对于段落这种结构没有特别的标记语法。如果硬要说有的话那段落的标记就是 <span class="strong"><strong>空行</strong></span> 。每一个段落在AsciiDoc中用空行来分隔，就这么简单。不过注意的是每一段的开头都要在左边顶格写，如果有空格的话就成另一种标记了，这个在<a class="xref" href="#literal_para" title="5.2.1. literal段落">Section 5.2.1, “literal段落”</a>中会有专门的介绍。</p></div><div class="section" title="3.3. 字体样式"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_字体样式"></a>3.3. 字体样式</h2></div></div></div><p>这里介绍几个常用的字体样式，它们是：</p><p><span class="strong"><strong>粗体</strong></span> ：</p><pre class="literallayout">*粗体* <a id="CO6-1"></a>(1)</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO6-1">(1)</a> </p></td><td valign="top" align="left"><p>
+如果加粗字体两旁有其他中文字体的话，需要用空格隔开，英文字体则无此问题。
+</p></td></tr></table></div><p><span class="emphasis"><em>斜体</em></span> ：</p><pre class="literallayout">'斜体'</pre><p><span class="underline">下划线</span> ：</p><pre class="literallayout">[underline]#下划线#</pre><p><span class="big">大号</span> ：</p><pre class="literallayout">[big]#大号#</pre><p><span class="red">有色字体</span> ：</p><pre class="literallayout">[red]#有色字体#</pre><p>需要注意的是中文文档的pdf的输出还不支持这些字体属性。这跟fop对字体处理的方式有关系。目前我还没找到完美的解决方案，只有一些取巧的办法，详见<a class="xref" href="#tool_chain" title="Chapter 2. 工具链的使用">Chapter 2, <i>工具链的使用</i></a>。</p></div></div><div class="chapter" title="Chapter 4. 写书常用的元素"><div class="titlepage"><div><div><h2 class="title"><a id="_写书常用的元素"></a>Chapter 4. 写书常用的元素</h2></div></div></div><div class="section" title="4.1. 脚注"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_脚注"></a>4.1. 脚注</h2></div></div></div><p>AsciiDoc为脚注提供了三种相关的语法：</p><div class="example"><a id="idp30115552"></a><p class="title"><b>Example 4.1. 脚注代码</b></p><div class="example-contents"><pre class="literallayout">只给定脚注内容footnote:[脚注示例1]。
+
+给定脚注内容和脚注IDfootnoteref:[ft_ex, 含ID的脚注示例]。
+
+对给定ID的脚注的引用footnoteref:[ft_ex]。</pre></div></div><br class="example-break" /><div class="example"><a id="idp30117376"></a><p class="title"><b>Example 4.2. 脚注效果</b></p><div class="example-contents"><p>只给定脚注内容<sup>[<a id="idp30118272" href="#ftn.idp30118272" class="footnote">1</a>]</sup>。</p><p>给定脚注内容和脚注ID<sup>[<a id="ft_ex" href="#ftn.ft_ex" class="footnote">2</a>]</sup>。</p><p>对给定ID的脚注的引用<sup>[<a href="#ftn.ft_ex" class="footnoteref">2</a>]</sup>。</p></div></div><br class="example-break" /></div><div class="section" title="4.2. 索引"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_索引"></a>4.2. 索引</h2></div></div></div><p>AsciiDoc有两种生成索引的方式：</p><div class="example"><a id="idp30122560"></a><p class="title"><b>Example 4.3. 索引代码</b></p><div class="example-contents"><pre class="literallayout">indexterm:[隐式一级索引（1）, 隐式二级索引（1）, 隐式三级索引（1）]
+隐式索引在原文中不会显式。
+(((隐式一级索引（2）, 隐式二级索引（2）, 隐式三级索引（2）)))
+indexterm:[隐式一级索引（3）] <a id="CO7-1"></a>(1)
+
+((显式索引（2）)) <a id="CO7-2"></a>(2)</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-1">(1)</a> </p></td><td valign="top" align="left"><p>
+二级索引和三级索引都是可以省略的。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO7-2">(2)</a> </p></td><td valign="top" align="left"><p>
+显式索引的内容会同时出现在原文中，而隐式则不会。
+</p></td></tr></table></div><div class="example"><a id="idp30127872"></a><p class="title"><b>Example 4.4. 索引效果</b></p><div class="example-contents"><p><a id="idp30128640" class="indexterm"></a>
+<a id="idp30130160" class="indexterm"></a>
+<a id="idp30131424" class="indexterm"></a>
+隐式索引在原文中不会显式。
+<a id="idp30132432" class="indexterm"></a>
+<a id="idp30133952" class="indexterm"></a>
+<a id="idp30135216" class="indexterm"></a>
+<a id="idp30136224" class="indexterm"></a></p><p><a id="idp30137360" class="indexterm"></a>显式索引（1）</p></div></div><br class="example-break" /><p>索引条目效果请参考本文档的“<a class="xref" href="#index" title="索引">索引</a>”。</p></div><div class="section" title="4.3. 内部引用"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_内部引用"></a>4.3. 内部引用</h2></div></div></div><p>写书时常常需要引用书本其他部分的文字，使用AsciiDoc的内部引用就能很方便的管理这些引用，只要改一个地方，所有引用都会跟着变动，不需要人工干预。</p><p>内部引用的对象是id，你可以在文档的任何部位创建引用id，然后在任何部位对这些id进行引用。创建标记使用“[[]]”，引用则使用“&lt;&lt;&gt;&gt;”。</p><div class="example"><a id="idp30141728"></a><p class="title"><b>Example 4.5. 引用代码</b></p><div class="example-contents"><pre class="literallayout">[[ref_exp, 自定义标记标签]] <a id="CO8-1"></a>(1)
+
+&lt;&lt;ref_exp&gt;&gt; <a id="CO8-2"></a>(2)
+
+&lt;&lt;ref_exp, 自定义引用标题&gt;&gt; <a id="CO8-3"></a>(3)</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-1">(1)</a> </p></td><td valign="top" align="left"><p>
+ref_exp就是id，后面的自定义标记标签可以省略，AsciiDoc会自动根据当前的位置生成标签。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-2">(2)</a> </p></td><td valign="top" align="left"><p>
+引用时可以只给出id，这样AsciiDoc会自动当前位置显示自定义或系统生成的标签。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO8-3">(3)</a> </p></td><td valign="top" align="left"><p>
+也可以在引用的时候指定要显示的内容。
+</p></td></tr></table></div></div></div><br class="example-break" /><div class="example"><a id="idp30148528"></a><p class="title"><b>Example 4.6. 引用效果</b></p><div class="example-contents"><p><a id="ref_exp"></a><a class="xref" href="#ref_exp"> 自定义标记标签</a></p><p><a class="link" href="#ref_exp">自定义引用标题</a></p></div></div><br class="example-break" /><p>引用也有第二种表示方式，例如：</p><pre class="literallayout">anchor:ref_exp[自定义标记标签]
+
+xref:ref_exp[自定义引用标题]</pre></div><div class="section" title="4.4. 附录，索引与参考目录的撰写"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_附录_索引与参考目录的撰写"></a>4.4. 附录，索引与参考目录的撰写</h2></div></div></div><p>在<a class="xref" href="#chaper" title="3.1. 章节">Section 3.1, “章节”</a>中我们提到过，AsciiDoc以章节（更准确的说是section）来对书本进行划分。但是我们平时写书的时候还会涉及到特殊的章节，例如附录，索引表，参考目录等等。这些部分应该是与章节（或者说section）是同级关系。为了能够方便的编写这一类特殊的章节，AsciiDoc引入了“<a id="idp30155040" class="indexterm"></a>section标记模板”这个概念。</p><p>你可以把section标记模板理解为一个特殊的章节（section），你给定一个模板的名字，然后这个章节里面的内容就会根据对应的模板来进行渲染。</p><p>AsciiDoc目前支持的模板有：</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+abstract
+</li><li class="listitem">
+preface
+</li><li class="listitem">
+colopho
+</li><li class="listitem">
+dedicatio
+</li><li class="listitem">
+glossar
+</li><li class="listitem">
+bibliograph
+</li><li class="listitem">
+synopsi
+</li><li class="listitem">
+appendi
+</li><li class="listitem">
+index
+</li></ul></div><p>使用模板，你能够很方便的创建一个附录：</p><div class="example"><a id="idp30164672"></a><p class="title"><b>Example 4.7. 附录代码</b></p><div class="example-contents"><pre class="literallayout">[appendix]
+附录示例
+========
+
+附录里面也是可以定义子附录的。
+
+附录子目录
+----------
+
+当然你还可以继续深入下去。</pre></div></div><br class="example-break" /><p>效果可以参考本文档的附录。</p><p>定义参考目录也可以使用类似的方法：</p><div class="example"><a id="idp30167392"></a><p class="title"><b>Example 4.8. 参考目录代码</b></p><div class="example-contents"><pre class="literallayout">[bibliography]
+参考文献目录
+============
+
+参考文献目录可以分多个区域：
+
+[bibliography] <a id="CO9-1"></a>(1)
+.书籍 <a id="CO9-2"></a>(2)
+- [[[taoup]]] Eric Steven Raymond. 'The Art of Unix <a id="CO9-3"></a>(3)
+  Programming'. Addison-Wesley. ISBN 0-13-142901-9.
+
+[bibliography]
+.论文
+- [[[abc2003]]] Gall Anonim. 'An article', Whatever. 2003.</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-1">(1)</a> <a href="#CO9-2">(2)</a> </p></td><td valign="top" align="left"><p>
+每个区域以[bibliography]开头，并使用块标题来指定区域的题目。关于块标题，请参考<a class="xref" href="#block_title" title="5.4. 块标题">Section 5.4, “块标题”</a>。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO9-3">(3)</a> </p></td><td valign="top" align="left"><p>
+引用条目的格式相对于BibTex或Docbook来说要简单很多，AsciiDoc的条目直接用列表表示。通常会给前面加个id，方便在正文内部进行引用。
+</p></td></tr></table></div><p>索引表目的撰写则最为简单：</p><div class="example"><a id="idp30174624"></a><p class="title"><b>Example 4.9. 索引表目代码</b></p><div class="example-contents"><pre class="literallayout">[index]
+索引标题 <a id="CO10-1"></a>(1)
+--------</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO10-1">(1)</a> </p></td><td valign="top" align="left"><p>
+只需给定标题即可，其他什么都不用写，系统会自动生成索引的条目。
+</p></td></tr></table></div></div><div class="footnotes"><br /><hr width="100" align="left" /><div class="footnote"><p><sup>[<a id="ftn.idp30118272" href="#idp30118272" class="simpara">1</a>] </sup>脚注示例1</p></div><div class="footnote"><p><sup>[<a id="ftn.ft_ex" href="#ft_ex" class="simpara">2</a>] </sup>含ID的脚注示例</p></div></div></div><div class="chapter" title="Chapter 5. AsciiDoc常用标记介绍"><div class="titlepage"><div><div><h2 class="title"><a id="_asciidoc常用标记介绍"></a>Chapter 5. AsciiDoc常用标记介绍</h2></div></div></div><p>这一章全是些很无聊的东西，扫一眼留个映象即可。以后用到时可以再查阅官方文档，那里有更专业的介绍。</p><div class="section" title="5.1. 列表"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_列表"></a>5.1. 列表</h2></div></div></div><p>列表是我平时写文档时最常用的标记，顾名思义，它用于表现你要逐点罗列的条目。其实就是HTML中的li标签。</p><p>列表主要分四种，分别适用于不同的场景：</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+无序列表
+</li><li class="listitem">
+有序列表
+</li><li class="listitem">
+标签列表
+</li><li class="listitem">
+callout列表
+</li></ul></div><div class="section" title="5.1.1. 无序列表"><div class="titlepage"><div><div><h3 class="title"><a id="_无序列表"></a>5.1.1. 无序列表</h3></div></div></div><p>无序列表的每一个条目以某个无任何含义的符号（默认是圆点）开头，语法如下：</p><div class="example"><a id="idp30186704"></a><p class="title"><b>Example 5.1. 无序列表语法</b></p><div class="example-contents"><pre class="literallayout">- 社会主义好
+- 自由软件好</pre></div></div><br class="example-break" /><p>无序列表的显示效果如下：</p><div class="example"><a id="idp30188608"></a><p class="title"><b>Example 5.2. 无序列表效果</b></p><div class="example-contents"><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+社会主义好
+</li><li class="listitem">
+自由软件好
+</li></ul></div></div></div><br class="example-break" /><p>列表是支持多级嵌套的，当你要表示多级列表时，请使用如下语法：</p><div class="example"><a id="ul_code"></a><p class="title"><b>Example 5.3. 无序列表的多级嵌套</b></p><div class="example-contents"><pre class="literallayout">- 第一级 <a id="CO11-1"></a>(1)
+* 第二级 <a id="CO11-2"></a>(2)
+** 第三级
+*** 第四级
+**** 第五级
+***** 第六级 <a id="CO11-3"></a>(3)</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-1">(1)</a> </p></td><td valign="top" align="left"><p>
+最高一级用“-”表示。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-2">(2)</a> </p></td><td valign="top" align="left"><p>
+接下来用一个或多个“*”表示。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO11-3">(3)</a> </p></td><td valign="top" align="left"><p>
+最多支持5个“*”，也就是6级嵌套。
+</p></td></tr></table></div></div><div class="section" title="5.1.2. 有序列表"><div class="titlepage"><div><div><h3 class="title"><a id="_有序列表"></a>5.1.2. 有序列表</h3></div></div></div><p>有序列表的每一个条目都以一个序号开头，并按照序号的增减顺序排列，语法如下：</p><div class="example"><a id="idp30200192"></a><p class="title"><b>Example 5.4. 有序列表语法</b></p><div class="example-contents"><pre class="literallayout">2. 阿拉伯数字作为序号（显式）<a id="CO12-1"></a>(1)
+a. 小写字母作为序号（显式）
+a. 小写字母作为序号（显式）<a id="CO12-2"></a>(2)
+F. 大写字母作为序号（显式）<a id="CO12-3"></a>(3)
+ii) 小写罗马字母作为序号（显式）
+IX) 大写罗马字母作为序号（显式）
+
+
+. 阿拉伯数字作为序号（隐式）<a id="CO12-4"></a>(4)
+.. 小写字母作为序号（隐式）
+.. 小写字母作为序号（隐式）
+... 小写罗马字母作为序号（隐式）
+.... 大写字母作为序号（隐式）
+..... 大写罗马字母作为序号（隐式）</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-1">(1)</a> </p></td><td valign="top" align="left"><p>
+显式语法在每个条目的开头指定序号的类型和起始大小。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-4">(4)</a> </p></td><td valign="top" align="left"><p>
+隐式语法不指定序号的类型和大小，而将这些交给AsciiDoc来决定。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO12-2">(2)</a> <a href="#CO12-3">(3)</a> </p></td><td valign="top" align="left"><p>
+每当序号类型改变时，条目就会自动缩进到更低的一级。
+</p></td></tr></table></div><p>显式效果如下：</p><div class="example"><a id="idp30208896"></a><p class="title"><b>Example 5.5. 有序列表效果</b></p><div class="example-contents"><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+阿拉伯数字作为序号（显式）
+</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+小写字母作为序号（显式）
+</li><li class="listitem"><p class="simpara">
+小写字母作为序号（显式）
+</p><div class="orderedlist"><ol class="orderedlist" type="A"><li class="listitem"><p class="simpara">
+大写字母作为序号（显式）
+</p><div class="orderedlist"><ol class="orderedlist" type="i"><li class="listitem"><p class="simpara">
+小写罗马字母作为序号（显式）
+</p><div class="orderedlist"><ol class="orderedlist" type="I"><li class="listitem"><p class="simpara">
+大写罗马字母作为序号（显式）
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+阿拉伯数字作为序号（隐式）
+</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem">
+小写字母作为序号（隐式）
+</li><li class="listitem"><p class="simpara">
+小写字母作为序号（隐式）
+</p><div class="orderedlist"><ol class="orderedlist" type="i"><li class="listitem"><p class="simpara">
+小写罗马字母作为序号（隐式）
+</p><div class="orderedlist"><ol class="orderedlist" type="A"><li class="listitem"><p class="simpara">
+大写字母作为序号（隐式）
+</p><div class="orderedlist"><ol class="orderedlist" type="I"><li class="listitem">
+大写罗马字母作为序号（隐式）
+</li></ol></div></li></ol></div></li></ol></div></li></ol></div></li></ol></div></li></ol></div></li></ol></div></li></ol></div></li></ol></div></li></ol></div></div></div><br class="example-break" /></div><div class="section" title="5.1.3. 标签列表"><div class="titlepage"><div><div><h3 class="title"><a id="_标签列表"></a>5.1.3. 标签列表</h3></div></div></div><p>标签列表的每一个条目都以用户指定的标签开头，有点像HTML里面的dt标签。</p><div class="example"><a id="idp30232464"></a><p class="title"><b>Example 5.6. 标签列表代码</b></p><div class="example-contents"><pre class="literallayout">定义1:: <a id="CO13-1"></a>(1)
+  “定义1”是……
+  定义1.1:::
+    “定义1.1”是……
+    定义1.1.1::::
+      “定义1.1.1”是……
+定义2::
+  “定义2”是……
+  定义2.2;; <a id="CO13-2"></a>(2)
+    “定义2.2”是……</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO13-1">(1)</a> <a href="#CO13-2">(2)</a> </p></td><td valign="top" align="left"><p>
+可以使用两个，三个，四个“:”或两个“;”进行标签列表条目的标记。
+</p></td></tr></table></div><p>效果如下：</p><div class="example"><a id="idp30237344"></a><p class="title"><b>Example 5.7. 标签列表效果</b></p><div class="example-contents"><div class="variablelist"><dl><dt><span class="term">
+定义1
+</span></dt><dd><p class="simpara">
+  “定义1”是……
+</p><div class="variablelist"><dl><dt><span class="term">
+定义1.1
+</span></dt><dd><p class="simpara">
+    “定义1.1”是……
+</p><div class="variablelist"><dl><dt><span class="term">
+定义1.1.1
+</span></dt><dd>
+      “定义1.1.1”是……
+</dd></dl></div></dd></dl></div></dd><dt><span class="term">
+定义2
+</span></dt><dd><p class="simpara">
+  “定义2”是……
+</p><div class="variablelist"><dl><dt><span class="term">
+定义2.2
+</span></dt><dd>
+    “定义2.2”是……
+</dd></dl></div></dd></dl></div></div></div><br class="example-break" /></div><div class="section" title="5.1.4. Callout列表"><div class="titlepage"><div><div><h3 class="title"><a id="_callout列表"></a>5.1.4. Callout列表</h3></div></div></div><p>Callout我还真不知道怎么翻译比较好，呵呵。不过这个东东在分析代码的时候非常有用！你几乎可以在任何用DocBook写的技术书籍里面看到它的身影。我们来看个例子：</p><div class="example"><a id="idp30249280"></a><p class="title"><b>Example 5.8. Callout列表代码</b></p><div class="example-contents"><pre class="literallayout">  .........................
+  - 第一级 &lt;1&gt;
+  * 第二级 &lt;2&gt;
+  ** 第三级
+  *** 第四级
+  **** 第五级
+  ***** 第六级 &lt;3&gt;
+  .........................
+
+  &lt;1&gt; 最高一级用“-”表示。
+  &lt;2&gt; 接下来用一个或多个“*”表示。
+  &lt;3&gt; 最多支持5个“*”，也就是6级嵌套。</pre></div></div><br class="example-break" /><p>效果请参考<a class="xref" href="#ul_code" title="Example 5.3. 无序列表的多级嵌套">Example 5.3, “无序列表的多级嵌套”</a>。</p></div></div><div class="section" title="5.2. 特殊段落"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_特殊段落"></a>5.2. 特殊段落</h2></div></div></div><p>我们在<a class="xref" href="#normal_para" title="3.2. 段落">Section 3.2, “段落”</a>中已经介绍过普通的段落了，AsciiDoc还支持其他特殊的段落，如引用段落，提示段落，警告段落等等。</p><div class="section" title="5.2.1. literal段落"><div class="titlepage"><div><div><h3 class="title"><a id="literal_para"></a>5.2.1. literal段落</h3></div></div></div><p>被标记为literal段落的文字会被原封不动的显式出来，AsciiDoc不会对里面的特殊标记进行解析。语法很简单，只需将整段文字缩进一格即可：</p><div class="example"><a id="idp30255648"></a><p class="title"><b>Example 5.9. literal段落语法</b></p><div class="example-contents"><pre class="literallayout">  这行文字不会被解析为标题
+  ========================</pre></div></div><br class="example-break" /><p>显示效果如下：</p><div class="example"><a id="idp30257808"></a><p class="title"><b>Example 5.10. literal段落效果</b></p><div class="example-contents"><pre class="literallayout">这行文字不会被解析为标题
+========================</pre></div></div><br class="example-break" /></div><div class="section" title="5.2.2. 引用段落"><div class="titlepage"><div><div><h3 class="title"><a id="_引用段落"></a>5.2.2. 引用段落</h3></div></div></div><p>你可以使用引用段落将你所引用的内容凸显出来，语法如下：</p><div class="example"><a id="idp30261120"></a><p class="title"><b>Example 5.11. 引用段落代码</b></p><div class="example-contents"><pre class="literallayout">[quote, GNU, from The Free Software Definition] <a id="CO14-1"></a>(1)
+“Free software” is a matter of liberty, not price. To understand the concept, you should think of “free” as in “free speech,” not as in “free beer.”</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO14-1">(1)</a> </p></td><td valign="top" align="left"><p>
+第一个quote指定引用的类型，当你引用诗句的时候这里可以填写verse;第二个填的是作者;第三个填的是来源。
+</p></td></tr></table></div><div class="example"><a id="quote_para"></a><p class="title"><b>Example 5.12. 引用段落效果</b></p><div class="example-contents"><div class="blockquote"><table border="0" width="100%" cellspacing="0" cellpadding="0" class="blockquote" summary="Block quote"><tr><td width="10%" valign="top"> </td><td width="80%" valign="top"><p>“Free software” is a matter of liberty, not price. To understand the concept, you should think of “free” as in “free speech,” not as in “free beer.”</p></td><td width="10%" valign="top"> </td></tr><tr><td width="10%" valign="top"> </td><td colspan="2" align="right" valign="top">--<span class="attribution">
+GNU
+<em class="citetitle">from The Free Software Definition</em>
+</span></td></tr></table></div></div></div><br class="example-break" /></div><div class="section" title="5.2.3. 警示段落"><div class="titlepage"><div><div><h3 class="title"><a id="admon_para"></a>5.2.3. 警示段落</h3></div></div></div><p>写书的时候经常需要在某个地方打上一段显眼的文字以提醒读者注意某些重要的内容，这是可以将这段文字设为警示段落，请看下面的例子：</p><div class="example"><a id="idp30269184"></a><p class="title"><b>Example 5.13. 警示段落代码</b></p><div class="example-contents"><pre class="literallayout">WARNING: 师兄出没，注意！
+
+TIP: 防火防盗防师兄。
+
+CAUTION: 小心湿滑。
+
+IMPORTANT: 明天要交按时交周报告了！
+
+NOTE: 我还是单身哦。</pre></div></div><br class="example-break" /><div class="example"><a id="idp30271168"></a><p class="title"><b>Example 5.14. 警示段落效果</b></p><div class="example-contents"><div class="warning" title="Warning" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Warning</h3><p>师兄出没，注意！</p></div><div class="tip" title="Tip" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Tip</h3><p>防火防盗防师兄。</p></div><div class="caution" title="Caution" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Caution</h3><p>小心湿滑。</p></div><div class="important" title="Important" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Important</h3><p>明天要按时交周报告了！</p></div><div class="note" title="Note" style="margin-left: 0; margin-right: 10%;"><h3 class="title">Note</h3><p>我还是单身哦。</p></div></div></div><br class="example-break" /><p>你也可以使用属性元素来标记：</p><pre class="literallayout">[WARNING]
+师兄出没，注意！
+
+[TIP]
+防火防盗防师兄。</pre></div></div><div class="section" title="5.3. 有界块元素"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_有界块元素"></a>5.3. 有界块元素</h2></div></div></div><p>顾名思义，有界块元素就是使用特殊符号作为分界线所画出的某一块用于表示特殊内容的区域。AsciiDoc支持各种各样的块结构，善用这些元素能使得写出来的文档可读性更强，更生动。</p><div class="section" title="5.3.1. 示例块"><div class="titlepage"><div><div><h3 class="title"><a id="_示例块"></a>5.3.1. 示例块</h3></div></div></div><div class="example"><a id="idp30278656"></a><p class="title"><b>Example 5.15. 示例块代码</b></p><div class="example-contents"><pre class="literallayout">.示例标题
+============================
+这是一个示例
+============================</pre></div></div><br class="example-break" /><p>示例块效果如下：</p><div class="example"><a id="idp30280752"></a><p class="title"><b>Example 5.16. 示例标题</b></p><div class="example-contents"><p>这是一个示例</p></div></div><br class="example-break" /></div><div class="section" title="5.3.2. 注释块"><div class="titlepage"><div><div><h3 class="title"><a id="_注释块"></a>5.3.2. 注释块</h3></div></div></div><div class="example"><a id="idp30283024"></a><p class="title"><b>Example 5.17. 注释块代码</b></p><div class="example-contents"><pre class="literallayout">////////////////////////////
+注释内容会被AsciiDoc忽略
+////////////////////////////</pre></div></div><br class="example-break" /></div><div class="section" title="5.3.3. 引用块"><div class="titlepage"><div><div><h3 class="title"><a id="_引用块"></a>5.3.3. 引用块</h3></div></div></div><p>引用块的效果与<a class="xref" href="#quote_para" title="Example 5.12. 引用段落效果">Example 5.12, “引用段落效果”</a>的效果一样。它适用于多段文字的引用。</p><div class="example"><a id="idp30286624"></a><p class="title"><b>Example 5.18. 引用块代码</b></p><div class="example-contents"><pre class="literallayout">[quote, 啄木鸟社区, 我们的奋起宣言]
+____________________________ <a id="CO15-1"></a>(1)
+
+每日至少抽一刻钟,解答邮件列表中初学者的问题，
+
+每周至少抽两小时,整理新学知识将体验发表/分享出去，
+
+通过Blog/Wiki/邮件列表/个人网站……
+
+每旬至少抽四个小时, 来翻译自个儿喜爱的自由软件的文档，
+
+每月至少抽八小时, 快乐的编程，推进自个儿的项目，
+
+每年至少参加一次, 自由软件的活动，传播自由软件思想，
+
+发展一名“自由人”……
+
+只要我们每个人都坚持下去……
+
+10年！就足以改变中国软件的整体风貌！
+____________________________</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO15-1">(1)</a> </p></td><td valign="top" align="left"><p>
+这里所使用的字符是“_”而不是“-”。
+</p></td></tr></table></div><div class="example"><a id="idp30291520"></a><p class="title"><b>Example 5.19. 引用块效果</b></p><div class="example-contents"><div class="blockquote"><table border="0" width="100%" cellspacing="0" cellpadding="0" class="blockquote" summary="Block quote"><tr><td width="10%" valign="top"> </td><td width="80%" valign="top"><p>每日至少抽一刻钟,解答邮件列表中初学者的问题，</p><p>每周至少抽两小时,整理新学知识将体验发表/分享出去，</p><p>通过Blog/Wiki/邮件列表/个人网站……</p><p>每旬至少抽四个小时, 来翻译自个儿喜爱的自由软件的文档，</p><p>每月至少抽八小时, 快乐的编程，推进自个儿的项目，</p><p>每年至少参加一次, 自由软件的活动，传播自由软件思想，</p><p>发展一名“自由人”……</p><p>只要我们每个人都坚持下去……</p><p>10年！就足以改变中国软件的整体风貌！</p></td><td width="10%" valign="top"> </td></tr><tr><td width="10%" valign="top"> </td><td colspan="2" align="right" valign="top">--<span class="attribution">
+啄木鸟社区
+<em class="citetitle">我们的奋起宣言</em>
+</span></td></tr></table></div></div></div><br class="example-break" /></div></div><div class="section" title="5.4. 块标题"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="block_title"></a>5.4. 块标题</h2></div></div></div><p>块标题用于给块元素添加标题，例如段落、有界块元素、列表、表格和图片等等。</p><div class="example"><a id="idp30299120"></a><p class="title"><b>Example 5.20. 块标题代码</b></p><div class="example-contents"><pre class="literallayout">.块标题示例 <a id="CO16-1"></a>(1)
+- 条目1 <a id="CO16-2"></a>(2)
+- 条目2</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-1">(1)</a> </p></td><td valign="top" align="left"><p>
+标题以“.”打头。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO16-2">(2)</a> </p></td><td valign="top" align="left"><p>
+块元素要紧跟它的标题。
+</p></td></tr></table></div><div class="example"><a id="idp30304144"></a><p class="title"><b>Example 5.21. 块标题效果</b></p><div class="example-contents"><div class="itemizedlist" title="块标题示例"><p class="title"><b>块标题示例</b></p><ul class="itemizedlist" type="disc"><li class="listitem">
+条目1
+</li><li class="listitem">
+条目2
+</li></ul></div></div></div><br class="example-break" /></div><div class="section" title="5.5. 表格"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_表格"></a>5.5. 表格</h2></div></div></div><div class="example"><a id="idp30308208"></a><p class="title"><b>Example 5.22. 表格代码</b></p><div class="example-contents"><pre class="literallayout">.表格示例 <a id="CO17-1"></a>(1)
+[width="80%",options="header"] <a id="CO17-2"></a>(2)
+|============================================== <a id="CO17-3"></a>(3)
+| 发行版          | 特性  <a id="CO17-4"></a>(4)
+| Ubuntu          | 最好的用户体验，最广的用户群
+| Fedora          | 最潮的发行版，新技术的实验田
+| Arch            | 轻量，灵活，精简
+| Debian          | 最自由，最通用的发行版
+| Gentoo          | 高定制性，性能优化的极限
+|============================================== <a id="CO17-5"></a>(5)</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO17-1">(1)</a> </p></td><td valign="top" align="left"><p>
+表格的标题，可以参看<a class="xref" href="#block_title" title="5.4. 块标题">Section 5.4, “块标题”</a>。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO17-2">(2)</a> </p></td><td valign="top" align="left"><p>
+这里可以设置表格的属性，header表示第一行为表格标题，你也可以设置footer。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO17-3">(3)</a> <a href="#CO17-5">(5)</a> </p></td><td valign="top" align="left"><p>
+表格以“=”开始和结束，注意每一行前面都要加上“|”。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO17-4">(4)</a> </p></td><td valign="top" align="left"><p>
+表格的每一行就是一行文字，每一列用“|”隔开。
+</p></td></tr></table></div><p>上面代码的显示效果如下：</p><div class="example"><a id="idp30318416"></a><p class="title"><b>Example 5.23. 表格效果</b></p><div class="example-contents"><div class="table"><a id="idp30319056"></a><p class="title"><b>Table 5.1. 表格示例</b></p><div class="table-contents"><table summary="表格示例" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; border-left: 3px solid #527bbd; border-right: 3px solid #527bbd; " width="80%"><colgroup><col /><col /></colgroup><thead><tr><th style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"> 发行版          </th><th style="border-bottom: 1px solid #527bbd; " align="left" valign="top"> 特性</th></tr></thead><tbody><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Ubuntu</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>最好的用户体验，最广的用户群</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Fedora</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>最潮的发行版，新技术的实验田</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Arch</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>轻量，灵活，精简</p></td></tr><tr><td style="border-right: 1px solid #527bbd; border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>Debian</p></td><td style="border-bottom: 1px solid #527bbd; " align="left" valign="top"><p>最自由，最通用的发行版</p></td></tr><tr><td style="border-right: 1px solid #527bbd; " align="left" valign="top"><p>Gentoo</p></td><td style="" align="left" valign="top"><p>高定制性，性能优化的极限</p></td></tr></tbody></table></div></div><br class="table-break" /></div></div><br class="example-break" /></div><div class="section" title="5.6. 图片的插入"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_图片的插入"></a>5.6. 图片的插入</h2></div></div></div><p>图片有两种插入方式，一种是<a id="idp30339632" class="indexterm"></a>内联（inline）模式，另一种是<a id="idp30340272" class="indexterm"></a>块（block）模式。内联模式用于在文字中间插入图片，而块模式则会另起一行将图片显示出来，并独占它的横向空间。</p><div class="example"><a id="idp30341328"></a><p class="title"><b>Example 5.24. 图片代码</b></p><div class="example-contents"><pre class="literallayout">内联模式的“图 image:./img/gnu-linux.jpg[height=20] 片”可以显示在文字的中间。 <a id="CO18-1"></a>(1)
+
+块模式的效果：
+
+image::./img/meditate.jpg[title="Levitating GNU",scaledwidth="50%",align="center"]</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO18-1">(1)</a> </p></td><td valign="top" align="left"><p>
+注意图片插入命令两边要有空格。
+</p></td></tr></table></div><p>渲染效果如下：</p><div class="example"><a id="idp30345472"></a><p class="title"><b>Example 5.25. 图片效果</b></p><div class="example-contents"><p>内联模式的“图 <span class="inlinemediaobject"><img src="./img/gnu-linux.jpg" height="20" alt="./img/gnu-linux.jpg" /></span> 片”可以显示在文字的中间。</p><p>块模式的效果：</p><div class="figure"><a id="idp30348992"></a><p class="title"><b>Figure 5.1. Levitating GNU</b></p><div class="figure-contents"><div class="mediaobject" align="center"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="50%"><tr><td align="center"><img src="./img/meditate.jpg" align="middle" width="100%" alt="./img/meditate.jpg" /></td></tr></table></div></div></div><br class="figure-break" /></div></div><br class="example-break" /></div></div><div class="chapter" title="Chapter 6. 提高效率的小技巧"><div class="titlepage"><div><div><h2 class="title"><a id="_提高效率的小技巧"></a>Chapter 6. 提高效率的小技巧</h2></div></div></div><div class="section" title="6.1. 文档的组织"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_文档的组织"></a>6.1. 文档的组织</h2></div></div></div><p>通常写书时，不建议将所有内容写在一个文件里面。而是将书以章节为单位进行划分。</p><p>将每个章节分别写到不同的文件中至少有如下好处：</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+你不用为了查看某一章节的改动而重新编译整本书。
+</li><li class="listitem">
+方便查看，你只需要到相应的文件中找你要找的内容，而不需要检索整本书。
+</li><li class="listitem">
+方便编辑，修改相应章节时只需编辑相应的文件。
+</li><li class="listitem">
+方便版本管理，每一章节有自己的commit历史。
+</li></ul></div><p>你可以通过以下方式在AsciiDoc中插入其他AsciiDoc文档：</p><div class="example"><a id="idp30359888"></a><p class="title"><b>Example 6.1. AsciiDoc文档的插入</b></p><div class="example-contents"><pre class="literallayout">include::chapter1.txt[]</pre></div></div><br class="example-break" /><p>这样，chapter1.txt的内容就被插入到了当前位置。接下来，我们只需将每个章节写到不同的文件中，然后在主文档中include各个章节即可。</p><p>为了使得每个章节能够单独编译，我通常会将章节的标题定为0级section（关于section请参考<a class="link" href="#0_1_section">“一本书的骨架”的注释</a>）。但是这样直接include的时候一本书就会出现多个0级section的定义，导致语法错误。所以我们需要使用下面的办法来将所include的内容的标题上调一级：</p><div class="example"><a id="idp30363328"></a><p class="title"><b>Example 6.2. leveloffset的设定</b></p><div class="example-contents"><pre class="literallayout">  :leveloffset: 1 <a id="CO19-1"></a>(1)
+
+  include::chapter1.txt[]
+
+  :leveloffset: 0 <a id="CO19-2"></a>(2)</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#CO19-1">(1)</a> </p></td><td valign="top" align="left"><p>
+将leveloffset设为1后，后面出现的section都会上调一级，于是0级标题就变成1级标题（也就是章节标题）了。你也可以根据需要将它设为2、3或4。
+</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#CO19-2">(2)</a> </p></td><td valign="top" align="left"><p>
+如果后面还有内容的话记得将leveloffset设回0。
+</p></td></tr></table></div></div></div><div class="appendix" title="Appendix A. 附录示例"><div class="titlepage"><div><div><h2 class="title"><a id="_附录示例"></a>Appendix A. 附录示例</h2></div></div></div><p>附录里面也是可以定义子附录的。</p><div class="section" title="A.1. 附录子目录"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_附录子目录"></a>A.1. 附录子目录</h2></div></div></div><p>当然你还可以继续深入下去。</p></div></div><div class="bibliography" title="参考文献目录"><div class="titlepage"><div><div><h2 class="title"><a id="_参考文献目录"></a>参考文献目录</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<a id="asciidoc_guide"></a>[asciidoc_guide] Stuart Rackham. <span class="emphasis"><em>AsciiDoc User Guide</em></span>.
+</li><li class="listitem">
+<a id="pdf_backend"></a>[pdf_backend] Stuart Rackham. <span class="emphasis"><em>AsciiDoc User Guide - 5.4. PDF generation</em></span>. <a class="ulink" href="http://www.methods.co.nz/asciidoc/userguide.html#_pdf_generation" target="_top">http://www.methods.co.nz/asciidoc/userguide.html#_pdf_generation</a>
+</li><li class="listitem">
+<a id="walsh-muellner"></a>[walsh-muellner] Norman Walsh &amp; Leonard Muellner.
+  <span class="emphasis"><em>DocBook - The Definitive Guide</em></span>. O’Reilly &amp; Associates. 1999.
+</li><li class="listitem">
+<a id="docbook_chinese"></a>[docbook_chinese] 如何用docbook生成中文的pdf. <a class="ulink" href="http://dev.sei.pku.edu.cn/trac/pkuas/wiki/如何用docbook生成中文的pdf" target="_top">http://dev.sei.pku.edu.cn/trac/pkuas/wiki/如何用docbook生成中文的pdf</a>
+</li><li class="listitem">
+<a id="fop_faq"></a>[fop_faq] 利用HTML生成PDF之问题整理. <a class="ulink" href="http://salever.iteye.com/blog/860611" target="_top">http://salever.iteye.com/blog/860611</a>
+</li><li class="listitem">
+<a id="fop_chinese"></a>[fop_chinese] fop中文配置. <a class="ulink" href="http://wangxc.iteye.com/blog/598912" target="_top">http://wangxc.iteye.com/blog/598912</a>
+</li><li class="listitem">
+<a id="asciidoc_chinese"></a>[asciidoc_chinese] asciidoc中文PDF输出. <a class="ulink" href="http://dram.me/blog/2011/03/09/export-chinese-pdf-from-asciidoc.html" target="_top">http://dram.me/blog/2011/03/09/export-chinese-pdf-from-asciidoc.html</a>
+</li></ul></div></div><div class="index" title="索引"><div class="titlepage"><div><div><h2 class="title"><a id="index"></a>索引</h2></div></div></div><div class="index"><div class="indexdiv"><h3>Symbols</h3><dl><dt>内联, <a class="indexterm" href="#_图片的插入">图片的插入</a></dt><dt>单行标题, <a class="indexterm" href="#chaper">章节</a></dt><dt>双行标题, <a class="indexterm" href="#chaper">章节</a></dt><dt>块, <a class="indexterm" href="#_图片的插入">图片的插入</a></dt><dt>显式索引（1）, <a class="indexterm" href="#_索引">索引</a></dt><dt>隐式一级索引（1）</dt><dd><dl><dt>隐式二级索引（1）</dt><dd><dl><dt>隐式三级索引（1）, <a class="indexterm" href="#_索引">索引</a></dt></dl></dd></dl></dd><dt>隐式一级索引（2）</dt><dd><dl><dt>隐式二级索引（2）</dt><dd><dl><dt>隐式三级索引（2）, <a class="indexterm" href="#_索引">索引</a></dt></dl></dd></dl></dd><dt>隐式一级索引（3）, <a class="indexterm" href="#_索引">索引</a></dt><dt>隐式三级索引（1）, <a class="indexterm" href="#_索引">索引</a></dt><dt>隐式三级索引（2）, <a class="indexterm" href="#_索引">索引</a></dt><dt>隐式二级索引（1）</dt><dd><dl><dt>隐式三级索引（1）, <a class="indexterm" href="#_索引">索引</a></dt></dl></dd><dt>隐式二级索引（2）</dt><dd><dl><dt>隐式三级索引（2）, <a class="indexterm" href="#_索引">索引</a></dt></dl></dd></dl></div><div class="indexdiv"><h3>S</h3><dl><dt>section标记模板, <a class="indexterm" href="#_附录_索引与参考目录的撰写">附录，索引与参考目录的撰写</a></dt></dl></div></div></div><div class="colophon" title="版权"><h2 class="title"><a id="_版权"></a>版权</h2><p>本著作係採用Attribution-ShareAlike 3.0 Unported授權。閱讀本授權條款，請到http://creativecommons.org/licenses/by-sa/3.0/，或寫信至Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.</p></div></div></body></html>
