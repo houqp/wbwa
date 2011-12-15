@@ -23,3 +23,6 @@ http://dev.sei.pku.edu.cn/trac/pkuas/wiki/如何用docbook生成中文的pdf
 - [[[asciidoc_chinese]]] asciidoc中文PDF输出. 
 http://dram.me/blog/2011/03/09/export-chinese-pdf-from-asciidoc.html
 
+- [[[asciidoc_cheatsheet]]] AsciiDoc cheatsheet
+http://powerman.name/doc/asciidoc
+
