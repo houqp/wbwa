@@ -2,7 +2,7 @@
 
 TARGET=wbwa
 
-all:open-pdf
+all:pdf html
 
 open-pdf:pdf
 	okular $(TARGET).pdf
@@ -26,4 +26,4 @@ po:*.txt
 	done
 
 clean:
-	rm -rf $(TARGET).html $(TARGET).xml $(TARGET).pdf *.css
+	rm -rf $(TARGET).html $(TARGET).xml $(TARGET).pdf *.css wbwa.fo
